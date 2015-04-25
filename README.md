@@ -1,7 +1,7 @@
 #XJTU_CERNET
 
 ## Usage:
-* Replace these two values with your accout!
+* Replace these two values with your account!
 
 ```
 username = 'your_username'
