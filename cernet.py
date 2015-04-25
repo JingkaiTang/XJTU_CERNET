@@ -7,12 +7,13 @@ import urllib.parse
 import urllib.request
 import re
 
+username = 'your_username'
+password = 'your_password'
+
 raw_data = {
     'action': 'login',
-    # replace this value with your username
-    'username': 'your_username',
-    # replace this value with your password
-    'password': 'your_password',
+    'username': username,
+    'password': password,
     'ac_id': 1,
     'type': 1
 }
