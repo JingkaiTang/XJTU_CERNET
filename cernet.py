@@ -5,12 +5,14 @@
 import urllib
 import urllib.parse
 import urllib.request
-import re
+import sys
 
 username = 'your_username'
 password = 'your_password'
 
-raw_data = {
+url = 'http://10.6.8.2/cgi-bin/srun_portal'
+
+login_data = {
     'action': 'login',
     'username': username,
     'password': password,
@@ -18,17 +20,16 @@ raw_data = {
     'type': 1
 }
 
+logout_data = {
+    'action': 'logout',
+    'ac_id': 1
+}
+
+raw_data = logout_data if len(sys.argv) == 2 and sys.argv[1] == "logout" else login_data
+
 data = urllib.parse.urlencode(raw_data).encode('utf-8')
-url = 'http://10.6.8.2/cgi-bin/srun_portal'
-req = urllib.request.Request(url, data)
-rep = urllib.request.urlopen(req)
-if rep.code == 200:
-    msg = rep.read().decode('utf-8')
-    pattern = re.compile(r'action=(\w+)')
-    match = pattern.search(msg)
-    if match:
-        print(match.group(1))
-    else:
-        print('Oh-No!')
-else:
-    print('Ah-Oh!')
+request = urllib.request.Request(url, data)
+response = urllib.request.urlopen(request)
+
+print(response.read().decode('utf-8'))
+
