@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 # A script for checking cernet if online, else login
 
 username="your_username"
